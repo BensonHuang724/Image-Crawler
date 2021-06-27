@@ -55,5 +55,13 @@ downloadBtn.addEventListener('click', ()=> {
         }
     }
     console.log("url list for download",downloadList);
-    
+    for (let i =0;i<downloadList.length;i++) {
+        let downloadOptions = {
+            "url": downloadList[i],
+            "saveAs": false,
+        };
+        chrome.downloads.download(downloadOptions,(bang)=>{
+            console.log('downloads callback:',bang);
+        });
+    }
 })
