@@ -1,9 +1,10 @@
-const analysisBtn = document.getElementById("analysis")
-const filenameIpt = document.getElementById("filename_extension")
-analysisBtn.addEventListener('click', ()=> {
+const searchBtn = document.getElementById("search");
+const filenameIpt = document.getElementById("filename_extension");
+const downloadBtn = document.getElementById("download");
+searchBtn.addEventListener('click', ()=> {
     chrome.tabs.query({active:true,currentWindow:true}, (tabs) => {
         console.log('query tab',tabs,tabs[0]);
-        chrome.tabs.sendMessage(tabs[0].id,{todo:"analysis",data:filenameIpt.value},(response) => {
+        chrome.tabs.sendMessage(tabs[0].id,{todo:"analysis",patterns:filenameIpt.value.split(/[ ,]+/)},(response) => {
                 console.log('response',response.urls);
                 urls = response.urls;
                 let urlBlock = document.getElementById('urls-block');
@@ -29,7 +30,7 @@ analysisBtn.addEventListener('click', ()=> {
                     anchor.appendChild(document.createTextNode(url));
                     anchor.href = url;
                     let label = document.createElement("label") ;
-                    label.for = i.toString();
+                    label.setAttribute("for",i.toString());
                     label.classList.add("form-check-label")
                     label.append(anchor);
 
@@ -38,10 +39,21 @@ analysisBtn.addEventListener('click', ()=> {
                     block.appendChild(checkbox); 
                     block.appendChild(label); 
                     urlBlock.appendChild(block);
-
                 };
                 console.log('insert links inside this website')
 
         });
     })
+})
+downloadBtn.addEventListener('click', ()=> {
+    let downloadList = [];
+    let checkboxes = document.getElementsByClassName("form-check-input");
+    let labels     = document.getElementsByClassName("form-check-label");
+    for (let i=0;i<checkboxes.length;i++) {
+        if (checkboxes[i].checked) {
+            downloadList.push(labels[i].getElementsByTagName("a")[0].href);
+        }
+    }
+    console.log("url list for download",downloadList);
+    
 })

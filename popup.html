@@ -12,15 +12,16 @@
     <body>
         <div class="container">
             <h5 class='header'>Image Crawler</h2>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="filename_extension" placeholder="Ex: jpg png">
-                <label for="filename_extension">Type (Ex: jpg png)</label>
+            <div class="filter_container">
+                <div class="form-floating my-1 mx-1">
+                    <input type="text" class="form-control" id="filename_extension" placeholder="Ex: jpg png">
+                    <label for="filename_extension">Type (Ex: jpg png)</label>
+                </div>
+                <button  class='btn btn-secondary btn-sm my-1'  id='search'>Search </button>
             </div>
-
-            <div class="urls-block" id='urls-block'></div>
-            <div class="btns">
-                <button  class='btn btn-primary'  id='analysis'>Analysis </button>
-                <button  class='btn btn-primary'  id='download'>Download </button>
+            <form class="urls-block my-2 container" id='urls-block'></form>
+            <div class="btn_container">
+                <button  class='btn btn-outline-primary'  id='download'>Download </button>
             </div>
             <script src="popup.js" ></script>
         </div>

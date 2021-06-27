@@ -1,5 +1,5 @@
 .container {
-  min-width: 250px;
+  min-width: 350px;
 }
 
 .header {
@@ -8,11 +8,24 @@
   padding: 8px;
 }
 
-input.submit {
-  margin-top: 12px;
+.filter_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.btns {
+.filter_container #filename_extension {
+  border-radius: 0;
+}
+
+.filter_container .form-floating {
+  width: 70%;
+}
+
+.btn_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

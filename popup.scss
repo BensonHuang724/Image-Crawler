@@ -1,19 +1,30 @@
 .container {
-    min-width: 250px;
+    min-width: 350px;
 }
+
 .header {
     text-align: center;
     margin: 12px;
     padding: 8px;
 }
-input.submit {
-    margin-top: 12px;
+
+.filter_container {
+    display: flex;
+    justify-content: center;
+    #filename_extension {
+        border-radius: 0;
+    }
+    .form-floating {
+        width: 70%;
+    }
 }
-.btns {
+
+.btn_container {
     display: flex;
     justify-content: space-around;
     margin: 18px;
 }
+
 .fading {
     background: 
        linear-gradient(-45deg, transparent calc(100%/3), rgba(0, 0, 0, 0.5), transparent calc(200%/3)) 
