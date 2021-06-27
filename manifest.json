@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,               
+    "name": "image downloader",                   
+    "version": "0.1",                            
+    "description": "download images",  
+
+    "background":{
+        "service_worker":"background.js"
+    },
+
+    "options_page": "options.html",
+
+    "action": {
+        "default_popup": "popup.html"
+    },
+
+    "content_scripts" : [
+        {
+            "matches": ["<all_urls>"],
+            "css":["content.css"],
+            "js":["content.js"]
+        }
+    ],
+
+    "host_permissions": [
+        "<all_urls>"
+      ],
+
+    "permissions":[ "storage",
+                    "tabs"]
+    
+  }
