@@ -1,4 +1,5 @@
 const searchBtn = document.getElementById("search");
+const selectBtn = document.getElementById('select-all') 
 const filenameIpt = document.getElementById("filename_extension");
 const downloadBtn = document.getElementById("download");
 searchBtn.addEventListener('click', ()=> {
@@ -14,7 +15,10 @@ searchBtn.addEventListener('click', ()=> {
                     urlBlock.removeChild(urlBlock.firstChild);
                 }
                 console.log('clear all links')
-
+                
+                let result = document.createElement('p');
+                result.textContent=`Result: ${urls.length} images`;
+                urlBlock.appendChild(result);
                 // insert links inside this website
                 for (var i = 0 ; i < urls.length ; i++) {
                     let url = urls[i];
@@ -64,4 +68,17 @@ downloadBtn.addEventListener('click', ()=> {
             console.log('downloads callback:',bang);
         });
     }
+})
+
+selectBtn.addEventListener('click', ()=> { 
+    let checkboxes = document.getElementsByClassName("form-check-input");
+    for (let i=0;i<checkboxes.length;i++) {
+        checkboxes[i].checked = !checkboxes[i].checked;
+    };
+    console.log(selectBtn.textContent);
+    if (selectBtn.textContent == "Select All") {
+        selectBtn.textContent = "Unselect All";
+    } else {
+        selectBtn.textContent = "Select All";
+    };
 })
