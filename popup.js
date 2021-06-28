@@ -72,13 +72,17 @@ downloadBtn.addEventListener('click', ()=> {
 
 selectBtn.addEventListener('click', ()=> { 
     let checkboxes = document.getElementsByClassName("form-check-input");
-    for (let i=0;i<checkboxes.length;i++) {
-        checkboxes[i].checked = !checkboxes[i].checked;
-    };
+    
     console.log(selectBtn.textContent);
     if (selectBtn.textContent == "Select All") {
         selectBtn.textContent = "Unselect All";
+        for (let i=0;i<checkboxes.length;i++) {
+            checkboxes[i].checked = true;
+        };
     } else {
         selectBtn.textContent = "Select All";
+        for (let i=0;i<checkboxes.length;i++) {
+            checkboxes[i].checked = false;
+        };
     };
 })
