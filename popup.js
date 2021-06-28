@@ -31,7 +31,14 @@ searchBtn.addEventListener('click', ()=> {
                     checkbox.id =  i.toString();
 
                     let anchor = document.createElement("a") ;
-                    anchor.appendChild(document.createTextNode(url));
+                    let lastSlash = url.lastIndexOf('/');
+                    let fileName = "bang";
+                    if (lastSlash != -1) {
+                        fileName = url.slice(lastSlash+1);
+                    } else {
+                        fileName = url;
+                    }  
+                    anchor.appendChild(document.createTextNode(fileName));
                     anchor.href = url;
                     let label = document.createElement("label") ;
                     label.setAttribute("for",i.toString());
@@ -72,7 +79,6 @@ downloadBtn.addEventListener('click', ()=> {
 
 selectBtn.addEventListener('click', ()=> { 
     let checkboxes = document.getElementsByClassName("form-check-input");
-    
     console.log(selectBtn.textContent);
     if (selectBtn.textContent == "Select All") {
         selectBtn.textContent = "Unselect All";
